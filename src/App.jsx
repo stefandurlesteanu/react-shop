@@ -1,14 +1,16 @@
-import { createRoot } from 'react-dom';
-import Pizza from './Pizza';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import {routeTree} from './routeTree.gen'
+
+const router = createRouter({ routeTree });
 
 const App = () => {
+
   return (
-    <div>
-      <h1>Padre Gino's Pizza – Order Now</h1>
-      <Pizza name="Pepperoni" description="Mozzarella Cheese, Pepperoni" />
-      <Pizza name="The Hawaiian Pizza" description="Sliced Ham, Pineapple, Mozzarella Cheese" />
-      <Pizza name="The Big Meat Pizza" description="Bacon, Pepperoni, Italian Sausage, Chorizo Sausage" />
-    </div>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
   );
 };
 
